@@ -1,10 +1,9 @@
 ﻿=== List Field Number Format for Gravity Forms ===
 Contributors: ovann86
-Donate link: https://www.itsupportguides.com/donate/
 Tags: Gravity Forms, forms, online forms, select, list, numbers, math
 Requires at least: 5.0
-Tested up to: 5.1
-Stable tag: 1.6.5
+Tested up to: 5.6
+Stable tag: 1.6.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +76,9 @@ Once you have done this simply 'number enable' the column and setup the total ca
 1. Shows the number format options in the forms editor.
 
 == Changelog ==
+
+= 1.6.6 =
+*Fix: resolve issue with list field numbers always saving values rounded to the closest integer regardless of the rounding setting in list field.
 
 = 1.6.5 =
 *Fix: resolve conflict with Gutenberg - adding form using a shortcode would give an error message
