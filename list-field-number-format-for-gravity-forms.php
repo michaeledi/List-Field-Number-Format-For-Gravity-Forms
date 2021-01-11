@@ -560,6 +560,7 @@ if ( class_exists( 'GFForms' ) ) {
 		} // END list_row_calculation_merge_tags
 
 		function list_column_display_total( $value, $entry, $field ) {
+
 			if ( $value ) {
 				$is_entry_detail = GFCommon::is_entry_detail();
 				if ( !( $is_entry_detail && 'edit' == rgpost( 'screen_mode' ) ) && is_object( $field ) && 'list' == $field->type ) {
@@ -672,34 +673,35 @@ if ( class_exists( 'GFForms' ) ) {
 			return $form;
 		} // END list_row_calculation
 
-		function get_formatted_value( $value, $number_format, $rounding, $isNumberFixedPoint ) {
-			if ( 'currency' == $number_format ) {
-				$currency = new RGCurrency( GFCommon::get_currency() );
-				$value = $currency->to_money( $value );
-			} else {
-				$value = GFCommon::format_number( $value, $number_format );
-				$value = GFCommon::round_number( $value, $rounding );
+        function get_formatted_value( $value, $number_format, $rounding, $isNumberFixedPoint ) {
+            if ( 'currency' == $number_format ) {
+                $currency = new RGCurrency( GFCommon::get_currency() );
+                $value = $currency->to_money( $value );
+            } else {
 
-				if ( ! $rounding || is_string ( $rounding ) ) {
-					$rounding = 0;
-				}
+                $value = GFCommon::format_number( $value, $number_format );
+                $value = GFCommon::round_number( $value, $rounding );
+//
+//                if ( ! $rounding || is_string ( $rounding ) ) {
+//                    $rounding = 0;
+//                }
 
-				if ( $number_format == 'decimal_comma' ) {
-					$dec_point = ',';
-					$thousands_sep = '.';
-				} else if ( $number_format == 'decimal_none' ) {
-					$dec_point = '.';
-					$thousands_sep = '';
-				} else {
-					$dec_point = '.';
-					$thousands_sep = ',';
-				}
+                if ( $number_format == 'decimal_comma' ) {
+                    $dec_point = ',';
+                    $thousands_sep = '.';
+                } else if ( $number_format == 'decimal_none' ) {
+                    $dec_point = '.';
+                    $thousands_sep = '';
+                } else {
+                    $dec_point = '.';
+                    $thousands_sep = ',';
+                }
 
-				$value = number_format( $value, $rounding, $dec_point, $thousands_sep );
+                $value = number_format( $value, $rounding, $dec_point, $thousands_sep );
 
-			}
-			return $value;
-		} // END get_formatted_value
+            }
+            return $value;
+        } // END get_formatted_value
 
 		// check is value provided is value, compared to number format and min/max range - used in validation
 		function is_valid_number( $value, $number_format, $isNumberRangeMin, $isNumberRangeMax, $form, $field, $row ) {
