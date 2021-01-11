@@ -1,0 +1,44 @@
+.gfield_list_cell input.range-error {
+	background: pink;
+}
+
+.gfield_list_cell input[readonly] {
+	background: lightgray;
+}
+
+.gfield_list_cell div.range-error .arrow-up {
+    border-bottom: 5px solid black;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    height: 0;
+    margin: 0 auto;
+    width: 0;
+}
+
+.gfield_list_cell div.range-error .range-error-flag {
+    background: pink none repeat scroll 0 0;
+    padding: 6px;
+    position: absolute;
+    z-index: 99;
+}
+
+.gfield_list_cell div.range-error {
+    position: relative;
+	//display: none;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+.gfield_list_cell input:hover + div.range-error,
+.gfield_list_cell input:focus + div.range-error,
+.gfield_list_cell input + div.range-error:hover,
+.gfield_list_cell input+ div.range-error:focus {
+	//display: list-item;
+	visibility: visible;
+	opacity: 1;
+}
+
+.gfield_list_cell input.decimal_dot, .gfield_list_cell input.decimal_comma, .gfield_list_cell input.currency {
+    text-align: right;
+}
