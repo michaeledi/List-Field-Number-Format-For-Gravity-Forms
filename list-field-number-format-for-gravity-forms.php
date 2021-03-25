@@ -2,7 +2,7 @@
 /*
 Plugin Name: List Field Number Format for Gravity Forms
 Description: Turn your list field columns into repeatable number fields
-Version: 1.6.6
+Version: 1.6.7
 Author: Adrian Gordon
 Author URI: https://www.itsupportguides.com
 License: GPL2
@@ -681,10 +681,10 @@ if ( class_exists( 'GFForms' ) ) {
 
                 $value = GFCommon::format_number( $value, $number_format );
                 $value = GFCommon::round_number( $value, $rounding );
-//
-//                if ( ! $rounding || is_string ( $rounding ) ) {
-//                    $rounding = 0;
-//                }
+
+                if ( ! $rounding || ! is_int ( $rounding ) ) {
+                    $rounding = 2;
+                }
 
                 if ( $number_format == 'decimal_comma' ) {
                     $dec_point = ',';
